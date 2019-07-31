@@ -1,0 +1,26 @@
+
+Exercise solutions.
+
+# from django.db.models import Avg, Sum, Max, Min
+
+1. Album.objects.all().filter(artist=Artist.objects.get(name='Queen'))
+
+2. Track.objects.filter(media_type=MediaType.objects.get(name='Protected MPEG-4 video file')).count()
+
+3. Genre.objects.get(name='Hip Hop/Rap')
+
+
+4. Track.objects.all().filter(genre=Genre.objects.get(name='Hip Hop/Rap')).count()
+
+5. Track.objects.aggregate(Sum('milliseconds'))
+
+6. 
+Track.objects.aggregate(Max('unit_price')).filter(media_type=MediaType.objects.get(name='MPEG audio file))
+
+7. Track.objects.aggregate(Min('unit_price')).filter(media_type=MediaType.objects.get(name='Protected MPEG audio file'))  
+
+8. It would not be possible to find this, as the ages of the artists is not provided.
+
+9. Track.objects.aggregate(Min('unit_price')).filter(media_type=MediaType.objects.get(name='Electronica/Dance'))
+
+10.Track.objects.all().filter(genre=Genre.objects.get(name='Electronica/Dance')).filter(media_type=MediaType.objects.get(name='Protected MPEG audio file'))   
